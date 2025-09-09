@@ -1,21 +1,147 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import './base.css';
-@import "tailwindcss";
+
+html{
+  scroll-behavior: smooth;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: 'Poppins', sans-serif;
 }
 
 #app {
-  padding: 2rem;
   font-weight: normal;
   font-family: Poppins, sans-serif;   
+  position: relative;
+}
+
+header {
+  padding: 1.3rem 3rem;
+  width: 100%;
+  display: flex;
+  position: sticky;
+  top: 0px;
+  background-color: var(--header-bg);
+  z-index: 999;
+}
+
+main{
+  max-width: 1400px;
+  margin: 0px auto;
+}
+
+.logo {
+  display: block;
+  margin: 0 2rem 0 0;
+}
+
+.navbar-menu{
+  display: none;
+}
+
+nav {
+  width: fit-content;
+  max-width: 1400px;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-left: auto !important;
+}
+
+nav a.router-link-exact-active {
+  color: rgb(100, 110, 203);
+  font-weight: bolder;
+}
+nav a.router-link-exact-active:hover   {
+  font-weight: bolder;
+}
+
+nav a:hover{
+  color: rgb(100, 110, 203);
+  text-decoration: underline;
+}
+
+nav a {
+  display: inline-block;
+  padding: 0 0.7rem;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: bold;
+}
+
+nav a:first-of-type {
+  border: 0;
+}
+
+
+/* ========== Breakpoints ========== */
+
+/* Small & Medium devices (<=768px)*/
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+
+  .navbar-menu{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 33px;
+    position: relative;
+    margin-left: auto;
+    background-color: transparent;
+    width: 30px;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 0px;
+  }
+
+  .navbar-menu::before{
+    content: '';
+    width: 65%;
+    align-self: flex-start;
+    background-color: var(--color-text);
+    height: 2px;
+    position: absolute;
+    right: 0px;
+  }
+
+  .navbar-menu .btn-line{
+    width: 40%;
+    background-color: var(--color-text);
+    height: 2px;
+    position: absolute;
+    right: 0px
+  }
+
+  .navbar-menu::after{
+    content: '';
+    align-self: flex-end;
+    background-color: var(--color-text);
+    height: 2px;
+    width: 80%;
+    position: absolute;
+    right: 0px
+  }
+}
+
+@media (min-width: 769px) {
+}
+
+/* Extra large devices (≥1200px) - Desktops */
+@media (max-width: 1200px) {
+}
+
+/* Optional: XXL (≥1400px) - Large widescreens */
+@media (min-width: 1400px) {
 }
 
 @media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+  /* a:hover {
+  } */
 }
 
 @media (min-width: 1024px) {
