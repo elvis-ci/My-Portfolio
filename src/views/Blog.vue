@@ -118,7 +118,7 @@ export default {
           <p class="resume-text mb-2 mt-4">
             I'm Elvis — a web developer and accessibility specialist.
           </p>
-          <a href="/about" class="text-link">Read my full bio →</a>
+          <router-link to="/" class="text-link">Read my full bio → </router-link>
         </div>
       </aside>
     </div>
