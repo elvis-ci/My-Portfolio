@@ -1,22 +1,38 @@
 <script>
 import { RouterLink } from 'vue-router';
+export default {
+  name: "navbar",
+  data() {
+    return {
+      isCondensed: false,
+    };
+  },
+  methods: {
+    /*Toggle menu*/
+    toggleMenu() {
+      this.isCondensed = !this.isCondensed;
+      if (this.isCondensed) {
+        document.getElementById("navigation").style.display = "block";
+      } else document.getElementById("navigation").style.display = "none";
+    },
+  },
+}
 </script>
 
 <template>
   <div class="nav">
     <img alt="Elvis Logo" class="logo" src=""/>
 
-    <button class="navbar-menu ml-auto" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation" role="button">
-      <span class="btn-line"></span>
-    </button>
-
-    <nav id="navbarSupportedContent" class="">
+    <nav id="navigation" class="">
       <RouterLink to="/">About</RouterLink>
       <RouterLink to="/resume">Resume</RouterLink>
       <RouterLink to="/portfolio">Portfolio</RouterLink>
       <RouterLink to="/blog">Blog</RouterLink>
       <RouterLink to="/contact">Contact</RouterLink>
     </nav>
+    <button  @click="toggleMenu()" :class="{ open: isCondensed === true }" class="navbar-menu ml-auto" aria-label="Toggle navigation" role="button">
+      <span class="btn-line"></span>
+    </button>
 
   </div>
 </template>
@@ -28,4 +44,5 @@ import { RouterLink } from 'vue-router';
     display: flex;
     margin: 0px auto;
   }
+  
 </style>

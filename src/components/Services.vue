@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "services",
+  name: "Services",
   props: {
     services: {
       type: Array,
@@ -13,7 +13,7 @@ export default {
 <template>
   <div class="container">
     <div class="row">
-      <h2 class="section-title">My Services</h2>
+      <h2 class="sub-section-title">My Services</h2>
     </div>
     <div class="row">
       <ul class="row">
@@ -40,10 +40,11 @@ export default {
 </template>
 
 <style scoped>
+
 .service-item {
   background-color: var(--card-bg);
   border-bottom: 2px solid var(--color-text);
-  box-shadow: var(--card-shadow);
+  /* box-shadow: var(--box-shadow); */
   padding: 38px 35px;
   box-sizing: border-box;
   transition: all 0.3s ease-in-out;
@@ -54,9 +55,7 @@ export default {
 
 /* Add hover glow boost */
 .service-item:hover {
-  box-shadow: 0 0 7px rgba(0, 255, 200, 0.9),
-              0 0 15px rgba(0, 255, 200, 0.7),
-              0 0 30px rgba(0, 255, 200, 0.6);
+  box-shadow: var(--box-shadow);
   transform: translateY(-4px);
 }
 li {
@@ -73,6 +72,7 @@ li {
   font-weight: 700;
   letter-spacing: -0.5px;
   margin-bottom: 14px;
+  color: var(--btn-bg);
 }
 .service-desc {
   margin-bottom: 0;
