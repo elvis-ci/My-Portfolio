@@ -9,3 +9,9 @@ const app = createApp(App)
 app.use(router)
 
 app.mount('#app')
+
+router.afterEach((to) => {
+  if(to.meta.title) {
+    document.title = to.meta.title;
+  }
+})

@@ -21,35 +21,53 @@
   --vt-c-text-dark-2: rgba(255, 255, 255, 0.64);
 }
 
-/* semantic color variables for this project */
 :root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
+  --color-background: #ffffff;
+  --color-background-soft: #f8f9fa;
+  --color-background-mute: #e9ecef;
 
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
+  --color-border: #ced4da;
+  --color-border-hover: #adb5bd;
 
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
+  --header-bg: #ffffff;
+  --card-bg: #f5f9ff;
+  --color-heading: #212529;
+  --color-text: #343a40;
 
-  --section-gap: 160px;
+  --section-gap: 50px;
+  --btn-color: #00704A;
+  --btn-bg: #00704A;
+  --nav-active: #00704A;
+  --nav-hover: #06a771;
+  --box-shadow: 0 0 3px rgba(127, 251, 203, 0.8),
+                0 0 6px rgba(127, 251, 191, 0.6),
+                0 0 10px rgba(127, 251, 193, 0.5);
+  --small-text: #595d63;
 }
 
-@media (prefers-color-scheme:dark) {
+
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
+    --color-background: #0d0d0d;
+    --color-background-soft: #1a1a1a;
+    --color-background-mute: #2a2a2a;
 
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
+    --color-border: #343a40;
+    --color-border-hover: #495057;
 
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+    --header-bg: #0d0d0d;
+    --card-bg: #1e1e2f;
+
+    --color-heading: #e9ecef;
+    --color-text: #dee2e6;
+
+    --btn-color: #1d7f3e;
+    --btn-bg: #5eef8f;
+    --nav-active: #5eef8f;
+    --nav-hover: #06a771;
+    --small-text: #ffffff90;
   }
-}
-
+} */
 
 body {
   min-height: 100dvh;
@@ -72,12 +90,7 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-section{
-  margin-bottom: var(--section-gap);
 }
