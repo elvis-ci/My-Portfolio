@@ -7,35 +7,37 @@ export default {
       required: true,
     },
   },
-    mounted() {
-    const faders = document.querySelectorAll('.fade-in');
-    const sliders = document.querySelectorAll('.slide-in');
+  mounted() {
+    const faders = document.querySelectorAll(".fade-in");
+    const sliders = document.querySelectorAll(".slide-in");
     const appearOptions = {
       threshold: 1,
-      rootMargin: "0px 0px 350px 0px"
+      rootMargin: "0px 0px 350px 0px",
     };
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-      entries.forEach(entry => {
+    const appearOnScroll = new IntersectionObserver(function (
+      entries,
+      appearOnScroll
+    ) {
+      entries.forEach((entry) => {
         if (!entry.isIntersecting) {
           return;
         } else {
-          entry.target.classList.add('appear');
+          entry.target.classList.add("appear");
           appearOnScroll.unobserve(entry.target);
         }
       });
-    }, appearOptions);
+    },
+    appearOptions);
 
-    faders.forEach(fader => {
+    faders.forEach((fader) => {
       appearOnScroll.observe(fader);
     });
 
-    sliders.forEach(slider => {
+    sliders.forEach((slider) => {
       appearOnScroll.observe(slider);
     });
-  }
-
+  },
 };
-
 </script>
 
 <template>
@@ -46,7 +48,9 @@ export default {
       class="col-12 col-md-6 mb-4"
       :aria-labelledby="'post-title-' + post.id"
     >
-      <article class="blog-card resume-card h-100 px-3 py-3 fade-in slide-in from-bottom from-top">
+      <article
+        class="blog-card resume-card h-100 px-3 py-3 fade-in slide-in from-bottom from-top"
+      >
         <figure v-if="post.image" class="blog-figure">
           <img
             :src="post.image"
@@ -56,16 +60,16 @@ export default {
         </figure>
 
         <div class="card-body pt-3">
-          <h3 :id="'post-title-' + post.id" class="resume-role mb-2">
+          <h3 :id="'post-title-' + post.id" class=" resume-role mb-2">
             {{ post.title }}
           </h3>
 
           <p class="small small-text mb-3">
-            <i class="icon ion-md-calendar" aria-hidden="true"></i> 
+            <i class="icon ion-md-calendar" aria-hidden="true"></i>
             <span class=""> Published on</span>
             {{ post.date }}
             <span class="mx-2">·</span>
-            <i class="icon ion-md-person" aria-hidden="true"></i> 
+            <i class="icon ion-md-person" aria-hidden="true"></i>
             <span class="resume-text px-1">
               {{ post.author }}
             </span>
@@ -75,7 +79,9 @@ export default {
             {{ post.excerpt }}
           </p>
 
-          <div class="d-flex align-items-center justify-content-between mt-auto">
+          <div
+            class="d-flex align-items-center justify-content-between mt-auto"
+          >
             <a
               :href="post.link"
               class="cv-btn read-more"
@@ -96,7 +102,7 @@ export default {
 </template>
 
 <style>
-.small-text{
+.small-text {
   color: var(--small-text);
 }
 .card-body {
@@ -105,6 +111,9 @@ export default {
   flex-grow: 1;
   margin: 0;
   padding: 0;
+}
+.card-body h3 {
+  font-size: 1.3rem;
 }
 
 /* Reuse your card / resume visual language */
@@ -118,6 +127,7 @@ export default {
   flex-direction: column;
   box-shadow: var(--card-shadow);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
+  font-size: 1.1rem;
 }
 
 /* image styling consistent with your about page */
@@ -125,7 +135,7 @@ export default {
   margin: 0;
   width: 100%;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(0,0,0,0.03), transparent);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.03), transparent);
 }
 .blog-image {
   width: 100%;
@@ -137,12 +147,12 @@ export default {
 /* hover lift (keeps your existing vibe) */
 .blog-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25), var(--card-shadow);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25), var(--card-shadow);
 }
 
 /* title + excerpt reuse */
 .resume-role {
-  font-weight:700;
+  font-weight: 700;
   font-size: 1.05rem;
   line-height: 1.25;
   color: var(--btn-bg);
@@ -180,5 +190,4 @@ export default {
     height: 180px;
   }
 }
-
 </style>

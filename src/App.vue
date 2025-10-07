@@ -98,6 +98,7 @@ export default {
 .back-to-top:hover {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
+  background-color: var(--btn-bg);
 }
 
 .back-to-top:hover .icons {

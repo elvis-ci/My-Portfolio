@@ -1,26 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import './base.css';
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import "./base.css";
 
-html{
+html {
   scroll-behavior: smooth;
 }
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 #app {
   font-weight: normal;
-  font-family: Poppins, sans-serif;   
+  font-family: Poppins, sans-serif;
   position: relative;
 }
 
 header {
-  padding: 1.3rem 3rem;
+  padding: 1.7rem 3rem;
   width: 100%;
   display: flex;
   position: sticky;
@@ -29,18 +29,17 @@ header {
   z-index: 999;
 }
 
-main{
+main {
   max-width: 1400px;
   margin: 0px auto;
 }
-
 
 .logo {
   display: block;
   margin: 0 2rem 0 0;
 }
 
-.navbar-menu{
+.navbar-menu {
   display: none;
 }
 
@@ -55,14 +54,14 @@ nav a.router-link-exact-active {
   color: var(--nav-active);
   font-weight: bolder;
 }
-nav a.router-link-exact-active:hover   {
+nav a.router-link-exact-active:hover {
   font-weight: bolder;
 }
-nav a:hover{
+nav a:hover {
   color: var(--nav-hover);
   text-decoration: underline;
 }
-nav a:focus{
+nav a:focus {
   color: var(--nav-hover);
   text-decoration: underline;
 }
@@ -73,6 +72,7 @@ nav a {
   text-decoration: none;
   color: var(--color-text);
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
 nav a:first-of-type {
@@ -108,24 +108,26 @@ nav a:first-of-type {
   line-height: 1.6;
   margin: 0 auto;
   max-width: 900px;
+  font-size: 1.3rem;
 }
-.sub-section-title{
+
+.sub-section-title {
   margin-block: 70px 30px;
   font-weight: bolder;
   color: var(--color-heading);
   display: block;
   width: fit-content;
 }
-.navbar-menu{
-  display:none;
+.navbar-menu {
+  display: none;
 }
 
 /* ========== Breakpoints ========== */
 
 /* Small & Medium devices (<=768px)*/
 @media (max-width: 768px) {
-  div.nav{
-    position:relative;
+  div.nav {
+    position: relative;
   }
   nav {
     display: none;
@@ -133,12 +135,12 @@ nav a:first-of-type {
     top: 100%;
     right: 0px;
   }
-  nav a{
+  nav a {
     display: block;
     text-align: end;
     padding: 15px 0px 10px;
   }
-  .navbar-menu{
+  .navbar-menu {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -152,8 +154,8 @@ nav a:first-of-type {
     border: 0px;
   }
 
-  .navbar-menu::before{
-    content: '';
+  .navbar-menu::before {
+    content: "";
     width: 65%;
     align-self: flex-start;
     background-color: var(--color-text);
@@ -162,22 +164,22 @@ nav a:first-of-type {
     right: 0px;
   }
 
-  .navbar-menu .btn-line{
+  .navbar-menu .btn-line {
     width: 40%;
     background-color: var(--color-text);
     height: 2px;
     position: absolute;
-    right: 0px
+    right: 0px;
   }
 
-  .navbar-menu::after{
-    content: '';
+  .navbar-menu::after {
+    content: "";
     align-self: flex-end;
     background-color: var(--color-text);
     height: 2px;
     width: 80%;
     position: absolute;
-    right: 0px
+    right: 0px;
   }
 }
 
@@ -205,4 +207,7 @@ nav a:first-of-type {
 
   /* #app {
   } */
+  nav a {
+    font-size: 1.1rem;
+  }
 }

@@ -1,8 +1,9 @@
 <script>
 import Services from "@/components/Services.vue";
-
+import VueTyper from "vue3-typer";
+import "vue3-typer/dist/vue-typer.css";
 export default {
-  components: { Services },
+  components: { Services, VueTyper },
   data() {
     return {
       fullBio: "",
@@ -89,7 +90,7 @@ export default {
             <!-- Profile Image (Left) -->
             <div class="col-12 col-lg-5 mb-4 about-image-container">
               <img
-                src="../assets/imgs/IMG_0022.jpeg"
+                src="../assets/imgs/myself2.png"
                 alt="Picture of Elvis Izuegbu"
                 class="img-thumbnail"
               />
@@ -98,17 +99,28 @@ export default {
             <!-- Bio Summary (Right) -->
             <div class="col-12 col-lg-7">
               <div class="bio-summary">
-                <h2>
-                  I'm Elvis Izuegbu,<br />
-                  A Frontend Developer and Web Accessibility Specialist
+                <h2
+                  aria-label="Hello, I am Elvis Izuegbu, a Web Developer, and Accessibility Specialist."
+                  style="white-space: pre-line"
+                >
+                  <VueTyper
+                    :text="[
+                      'Hello, I am Elvis Izuegbu,\nA Web Developer, And Accessibility Specialist.',
+                    ]"
+                    :type-delay="100"
+                    :cursor-blink="true"
+                    :repeat="0"
+                    :initial-action-delay="500"
+                  />
                 </h2>
                 <!-- Short preview -->
                 <p class="mt-3">
                   Experienced in building interractive, inclusive UIs with
-                  modern web technologies. I also specialize in accessibility
-                  testing and remediation using testing tools, section 508, and
-                  WCAG guidelines, ensuring legal compliance and driving user
-                  retention through improved user experience.
+                  modern web technologies. I also specialize in manual and
+                  automated accessibility testing and remediation using testing
+                  tools, section 508, and WCAG guidelines, ensuring legal
+                  compliance and driving user retention through improved user
+                  experience.
                 </p>
                 <!-- Hidden full text -->
                 <div
@@ -166,7 +178,9 @@ export default {
               </div>
               <div class="d-block d-sm-flex align-items-center">
                 <!-- CV Button -->
-                <button class="cv cv-btn btn btn-success">Download CV</button>
+                <router-link to="/contact" class="cv cv-btn btn btn-success"
+                  >Contact Me</router-link
+                >
                 <!-- Socials -->
                 <ul class="socials">
                   <li class="list-inline-item">
@@ -246,6 +260,10 @@ export default {
   font-weight: bolder;
   color: var(--color-heading);
 }
+
+.typer-header {
+  color: white !important;
+}
 /* .section-title::after {
   content: "";
   display: block;
@@ -288,7 +306,6 @@ export default {
 .bio-summary {
   border-bottom: 3px solid rgba(91, 91, 91, 0.259);
   padding-bottom: 20px;
-  font-size: 1.2rem;
 }
 .bio-summary h2 {
   font-weight: 800;
@@ -296,12 +313,8 @@ export default {
   color: var(--color-heading);
   text-align: start;
 }
-.bio-summary p {
-  font-size: 1.4rem;
-}
 .bio-data {
   padding: 20px 0;
-  font-size: 1.4rem;
   text-align: justify;
 }
 .name-email {
@@ -330,7 +343,16 @@ export default {
   box-shadow: var(--card-shadow);
   transform: translateY(-4px);
 }
-
+::v-deep(.vue-typer) {
+  --char-typed-color:var(--color-heading); /* text color */
+  --char-selected-color:var(--color-heading); /* text color when selected */
+  --char-selected-background-color: var(--color-heading); /* selection highlight */
+  --caret-idle-color: var(--color-heading);
+  --caret-typing-color: var(--color-heading);
+  --caret-erasing-color: var(--color-heading);
+  --caret-complete-color: var(--color-heading);
+  --caret-selecting-color: var(--color-heading);
+}
 @media (max-width: 991px) {
   .about-image-container img {
     width: 300px;
@@ -362,7 +384,7 @@ export default {
   .bio-summary p,
   button,
   a {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   .bio-summary h2 {
     font-size: 1.7rem;
