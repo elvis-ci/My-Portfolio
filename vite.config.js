@@ -10,36 +10,36 @@ export default defineConfig({
   plugins: [
     vue(),
     tailwindcss(),
-    sitemap({
-      hostname: "https://your-domain.com",
-      routes: [
-        {
-          path: "/", // Homepage
-          priority: 1.0, // Most important
-          changefreq: "monthly",
-        },
-        {
-          path: "/resume",
-          priority: 0.9,
-          changefreq: "monthly",
-        },
-        {
-          path: "/portfolio",
-          priority: 0.8,
-          changefreq: "monthly",
-        },
-        {
-          path: "/blog",
-          priority: 0.6,
-          changefreq: "monthly",
-        },
-        {
-          path: "/contact",
-          priority: 0.7,
-          changefreq: "monthly",
-        },
-      ],
-    }),
+    // sitemap({
+    //   hostname: "https://your-domain.com",
+    //   routes: [
+    //     {
+    //       path: "/", // Homepage
+    //       priority: 1.0, // Most important
+    //       changefreq: "monthly",
+    //     },
+    //     {
+    //       path: "/resume",
+    //       priority: 0.9,
+    //       changefreq: "monthly",
+    //     },
+    //     {
+    //       path: "/portfolio",
+    //       priority: 0.8,
+    //       changefreq: "monthly",
+    //     },
+    //     {
+    //       path: "/blog",
+    //       priority: 0.6,
+    //       changefreq: "monthly",
+    //     },
+    //     {
+    //       path: "/contact",
+    //       priority: 0.7,
+    //       changefreq: "monthly",
+    //     },
+    //   ],
+    // }),
   ],
   resolve: {
     alias: {
