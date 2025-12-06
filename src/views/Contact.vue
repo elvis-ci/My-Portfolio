@@ -1,320 +1,230 @@
-<script>
+<script setup>
+import { ref } from "vue";
 import emailjs from "emailjs-com";
-export default {
-  name: "contactForm",
-  data() {
-    return {
-      loading: false,
-      statusMessage: "",
-      currentTime: new Date().toLocaleString(), // dynamically sets current time
-    };
-  },
-  methods: {
-    async sendEmail() {
-      this.loading = true;
-      this.statusMessage = "";
 
-      try {
-        // Make sure you've initialized your public key in EmailJS dashboard
-        const result = await emailjs.sendForm(
-          "service_14f4hin", // your service ID
-          "template_ulz7xor", // your template ID
-          this.$refs.contactForm,
-          "fWqSMbfwUo3YAzNt8" // your public key from EmailJS
-        );
+// Reactive state
+const loading = ref(false);
+const statusMessage = ref("");
+const currentTime = ref(new Date().toLocaleString());
 
-        this.statusMessage = "✅ Message sent successfully!";
-        console.log("SUCCESS:", result.text);
-      } catch (error) {
-        this.statusMessage = "❌ Failed to send message. Please try again.";
-        console.error("FAILED...", error);
-      } finally {
-        this.loading = false;
-      }
-    },
-  },
+// Form ref
+const contactForm = ref(null);
+
+// Send email function
+const sendEmail = async () => {
+  loading.value = true;
+  statusMessage.value = "";
+
+  try {
+    const result = await emailjs.sendForm(
+      "service_14f4hin",
+      "template_ulz7xor",
+      contactForm.value,
+      "fWqSMbfwUo3YAzNt8"
+    );
+
+    statusMessage.value = "✅ Message sent successfully!";
+    console.log("SUCCESS:", result.text);
+  } catch (error) {
+    statusMessage.value = "❌ Failed to send message. Please try again.";
+    console.error("FAILED...", error);
+  } finally {
+    loading.value = false;
+  }
 };
 </script>
 
 <template>
-  <main>
-    <section class="contact-page px-4">
-      <div class="container">
-        <div class="section-header text-center">
-          <h1 class="section-title">Contact Me</h1>
-          <p class="section-subtitle">
-            Looking to discuss a new project, explore opportunities, or ask
-            questions about my work? Feel free to reach out using the form below
-            or through my social channels!
-          </p>
-        </div>
+  <main id="main-content" class="px-4 py-10 max-w-7xl mx-auto text-text">
+    <!-- Header -->
+    <section class="text-center mb-12">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-heading">
+        Contact Me
+      </h1>
+      <p class="text-base sm:text-lg text-color-text mt-4 max-w-2xl mx-auto">
+        Have a project idea, question, or want to collaborate? Send me an email
+        or reach out on any of the platforms listed, and I’ll get back to you as
+        soon as possible!
+      </p>
+    </section>
 
-        <div class="row">
-          <!-- Left: Contact Form -->
-          <div class="col-lg-7">
-            <div class="contact-form">
-              <h2 class="form-title">Send Me a Message</h2>
-              <p class="form-instructions">
-                Fields marked with <span class="required-asterisk">*</span> are
-                required.
-              </p>
+    <!-- Main grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <!-- Form Column -->
+      <div
+        class="lg:col-span-8 bg-card-bg border border-gray-300 rounded-xl py-6 px-4 sm:p-8 shadow-lg"
+      >
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-btn-bg mb-6">
+          Send a Message
+        </h2>
+        <form ref="contactForm" @submit.prevent="sendEmail" class="space-y-6">
+          <input type="hidden" name="time" :value="currentTime" />
 
-              <form ref="contactForm" @submit.prevent="sendEmail">
-                <div class="row">
-                  <input type="hidden" name="time" :value="currentTime" />
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="name" class="form-label">
-                        Full Name
-                        <span class="required-asterisk text-danger">*</span>
-                      </label>
-                      <input
-                        name="name"
-                        type="text"
-                        class="form-control"
-                        id="name"
-                        placeholder="Enter your name"
-                        required
-                      />
-                    </div>
-                  </div>
+          <!-- Name & Email -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col">
+              <label class="text-sm sm:text-base font-semibold mb-1" for="name"
+                >Full Name <span class="text-red-500">*</span></label
+              >
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Enter your name"
+                required
+                class="border bg-background/40 rounded-lg px-4 py-1.5 sm:py-2 focus:outline-none focus:ring-2 focus:ring-btn-bg"
+              />
+            </div>
 
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="email" class="form-label">
-                        Email Address
-                        <span class="required-asterisk text-danger">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        class="form-control"
-                        id="email"
-                        placeholder="Enter your email"
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="subject" class="form-label">
-                    Subject <span class="required-asterisk text-danger">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="title"
-                    class="form-control"
-                    id="subject"
-                    placeholder="Message subject"
-                    required
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="message" class="form-label">
-                    Message <span class="required-asterisk text-danger">*</span>
-                  </label>
-                  <textarea
-                    class="form-control"
-                    id="message"
-                    name="message"
-                    rows="5"
-                    placeholder="Write your message..."
-                    required
-                  ></textarea>
-                </div>
-
-                <div class="form-actions mt-3">
-                  <button type="submit" class="btn-submit btn btn-success">
-                    {{ loading ? "Sending..." : "Send Message" }}
-                  </button>
-                </div>
-                <p v-if="statusMessage" class="status">{{ statusMessage }}</p>
-              </form>
+            <div class="flex flex-col">
+              <label class="text-sm sm:text-base font-semibold mb-1" for="email"
+                >Email Address <span class="text-red-500">*</span></label
+              >
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                required
+                class="bg-background/40 border rounded-lg px-4 py-1.5 sm:py-2 focus:outline-none focus:ring-2 focus:ring-btn-bg"
+              />
             </div>
           </div>
 
-          <!-- Right: Contact Information -->
-          <div class="col-lg-5">
-            <div class="contact-info">
-              <!-- Heading always at the top -->
-              <div class="pb-4">
-                <h2 class="form-title">Contact Info</h2>
-                <p>
-                  Always available for freelance work if the right project comes
-                  along, Feel free to contact me!
-                </p>
-              </div>
-              <!-- Content Row -->
-              <div class="d-flex">
-                <!-- Icons Column -->
-                <div
-                  class="contact-icons d-flex flex-column align-items-center pe-3 me-3"
-                >
-                  <i class="icon ion-md-pin"></i>
-                  <i class="icon ion-md-call"></i>
-                  <i class="icon ion-md-mail"></i>
-                  <a
-                    href="https://www.linkedin.com/in/izuegbu-elvis"
-                    aria-label="connect with me on linkedin"
-                    target="_blank"
-                    rel="noreferrer"
-                    ><i class="icon ion-logo-linkedin"></i
-                  ></a>
-                  <a
-                    href="https://github.com/elvis-ci"
-                    target="_blank"
-                    aria-label="visit my github"
-                    rel="noreferrer"
-                    ><i class="icon ion-logo-github"></i
-                  ></a>
-                </div>
+          <!-- Subject -->
+          <div class="flex flex-col">
+            <label class="text-sm sm:text-base font-semibold mb-1" for="subject"
+              >Subject <span class="text-red-500">*</span></label
+            >
+            <input
+              id="subject"
+              name="title"
+              type="text"
+              placeholder="Message subject"
+              required
+              class="bg-background/40 border rounded-lg px-4 py-1.5 sm:py-2 focus:outline-none focus:ring-2 focus:ring-btn-bg"
+            />
+          </div>
 
-                <!-- Text Column -->
-                <div
-                  class="contact-text d-flex flex-column justify-content-start ps-3"
-                >
-                  <p>Lagos, Nigeria</p>
-                  <p>+234 901 769 0869</p>
-                  <p>izuegbuelvis@gmail.com</p>
-                  <p>linkedin.com/in/izuegbu-elvis</p>
-                  <p>github.com/elvis-ci</p>
-                </div>
-              </div>
+          <!-- Message -->
+          <div class="flex flex-col">
+            <label class="text-sm sm:text-base font-semibold mb-1" for="message"
+              >Message <span class="text-red-500">*</span></label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              placeholder="Write your message..."
+              required
+              class="bg-background/40 border rounded-lg px-4 py-1.5 sm:py-2 focus:outline-none focus:ring-2 focus:ring-btn-bg resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Submit -->
+          <div>
+            <button
+              type="submit"
+              class="bg-btn-bg text-white font-semibold px-6 py-3 rounded-full hover:shadow-xl transition disabled:opacity-50 disabled:cursor-not-allowed w-full md:w-auto"
+              :disabled="loading"
+            >
+              {{ loading ? "Sending..." : "Send Message" }}
+            </button>
+            <p v-if="statusMessage" class="mt-3 text-sm text-color-text">
+              {{ statusMessage }}
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Info Column -->
+      <div class="lg:col-span-4 flex flex-col gap-6">
+        <div class="bg-card-bg border border-gray-300 rounded-xl p-6 shadow-lg">
+          <h2 class="text-xl sm:text-2xl font-bold text-btn-bg mb-4">
+            Contact Info
+          </h2>
+          <p class="mb-4">
+            Available for freelance work and collaborations. Feel free to reach
+            out!
+          </p>
+
+          <div class="flex flex-col space-y-4">
+            <!-- Location -->
+            <div class="flex items-center gap-3">
+              <i class="icon ion-md-pin text-xl"></i>
+              <span>Lagos, Nigeria</span>
             </div>
+
+            <!-- Phone -->
+            <div class="flex items-center gap-3">
+              <i class="icon ion-md-call text-xl"></i>
+              <a href="tel:+2349017690869" class="hover:text-btn-bg transition">
+                +234 901 769 0869
+              </a>
+            </div>
+
+            <!-- Email -->
+            <div class="flex items-center gap-3">
+              <i class="icon ion-md-mail text-xl"></i>
+              <a
+                href="mailto:izuegbuelvis@gmail.com"
+                class="hover:text-btn-bg transition"
+              >
+                izuegbuelvis@gmail.com
+              </a>
+            </div>
+
+            <!-- LinkedIn -->
+            <a
+              href="https://www.linkedin.com/in/izuegbu-elvis"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              class="flex items-center gap-3 hover:text-btn-bg transition"
+            >
+              <i class="icon ion-logo-linkedin text-xl"></i>
+              <span>linkedin.com/in/izuegbu-elvis</span>
+            </a>
+
+            <!-- GitHub -->
+            <a
+              href="https://github.com/elvis-ci"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+              class="flex items-center gap-3 hover:text-btn-bg transition"
+            >
+              <i class="icon ion-logo-github text-xl"></i>
+              <span>github.com/elvis-ci</span>
+            </a>
+          </div>
+        </div>
+        <div class="bg-card-bg border border-gray-300 rounded-xl p-6 shadow-lg">
+          <h2 class="text-xl sm:text-2xl font-semibold mb-2 text-btn-bg">
+            Follow Me
+          </h2>
+          <p class="mb-4">Connect on social media for updates and projects</p>
+          <div class="flex justify-start gap-6 text-2xl">
+            <a
+              href="https://www.linkedin.com/in/izuegbu-elvis"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn profile link"
+              ><i class="icon ion-logo-linkedin"></i
+            ></a>
+            <a
+              href="https://github.com/elvis-ci"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub Profile link"
+              ><i class="icon ion-logo-github"></i
+            ></a>
+            <a href="mailto:izuegbuelvis@gmail.com" aria-label="email link"
+              ><i class="icon ion-md-mail"></i
+            ></a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </main>
 </template>
-
-<style scoped>
-p {
-  font-size: 1.2rem;
-}
-/* Shared cards */
-.contact-form,
-.contact-info {
-  background-color: var(--card-bg);
-  color: var(--color-text);
-  border: 1px solid #dddddd53;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column; /* stack heading on top */
-}
-
-.form-title {
-  font-weight: 700;
-  font-size: 1.75rem;
-  color: var(--btn-bg);
-  margin-bottom: 1rem; /* give spacing under heading */
-}
-
-.form-instructions {
-  font-size: 1.06rem;
-  margin-bottom: 1.5rem;
-  color: var(--small-text);
-}
-
-.required-asterisk {
-  color: red;
-  margin-right: 0.25rem;
-  font-weight: bold;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-label {
-  font-weight: 600;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.form-control {
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  padding: 0.75rem;
-  font-size: 1rem;
-}
-
-.form-control:focus,
-.form-control:hover {
-  outline: none;
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
-}
-
-.form-actions {
-  margin-top: 1.25rem;
-}
-
-.btn-submit {
-  background: var(--btn-bg) !important;
-  border-radius: 30px;
-  padding: 10px 35px;
-  border: 1px solid #009e66 !important;
-  margin-right: 23px;
-  transition: all 0.3s ease-in-out;
-  color: #ffffff;
-  font-size: 1.2rem;
-}
-
-.btn-submit:hover {
-  box-shadow: var(--card-shadow);
-  transform: translateY(-4px);
-}
-
-/* Right Contact Info */
-.contact-info {
-  display: flex;
-  padding: 1.5rem;
-}
-
-.contact-icons {
-  padding-right: 1rem;
-  margin-right: 1rem;
-  border-right: 2px dashed var(--box-shadow);
-  position: relative;
-}
-.contact-icons::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: -1px; /* align with the border */
-  height: 100%;
-  border-right: 1px dashed var(--btn-bg); /* dashed line */
-  box-shadow: var(--box-shadow); /* optional glow */
-}
-
-.contact-icons .icon,
-.icon-x,
-a {
-  font-size: 1.5rem;
-  height: 38px;
-  margin-bottom: 1rem;
-  color: var(--color-text);
-}
-
-.contact-icons .ion-logo-github {
-  color: var(--color-text);
-}
-
-/* Contact text */
-.contact-text p {
-  height: 38px;
-  /* margin-bottom: 1rem; */
-  font-size: 1.2rem;
-  color: var(--color-text);
-}
-
-.contact-text p:last-child {
-  margin-bottom: 0;
-}
-</style>

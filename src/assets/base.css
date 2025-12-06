@@ -1,94 +1,81 @@
-/* color palette from <https://github.com/vuejs/theme> */
-:root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
+@import "tailwindcss";
 
-  --vt-c-black: #111;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
-
-  --vt-c-indigo: #2c3e50;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(255, 255, 255, 0.64);
-}
-
-:root {
+/* 🌤️ LIGHT THEME — Default */
+@theme {
+  /* Backgrounds */
   --color-background: #ffffff;
-  --color-background-soft: #f8f9fa;
-  --color-background-mute: #e9ecef;
 
+  /* Navigation */
+  --color-nav-active: #00704a;
+  --color-nav-hover: #06a771;
+
+  /* Borders */
   --color-border: #ced4da;
   --color-border-hover: #adb5bd;
 
-  --header-bg: #ffffff;
-  --card-bg: #f5f9ff;
+  /* Buttons */
+  --color-btn-green: #00704a;
+  --color-btn-bg: #00704a;
+
+  /* Cards */
+  --color-card-bg: #f5f9ff;
+  --color-card-border: #ced4da;
+
+  /* Texts */
   --color-heading: #212529;
   --color-text: #343a40;
+  --color-small-text: #595d63;
 
+  /* Section spacing */
   --section-gap: 50px;
-  --btn-color: #00704A;
-  --btn-bg: #00704A;
-  --nav-active: #00704A;
-  --nav-hover: #06a771;
-  --box-shadow: 0 0 3px rgba(127, 251, 203, 0.8),
-                0 0 6px rgba(127, 251, 191, 0.6),
-                0 0 10px rgba(127, 251, 193, 0.5);
-  --small-text: #595d63;
+
+  /* Shadows */
+  --color-box-shadow: 
+    0 0 3px rgba(127, 251, 203, 0.8),
+    0 0 6px rgba(127, 251, 191, 0.6),
+    0 0 10px rgba(127, 251, 193, 0.5);
 }
 
-
+/* 🌙 DARK THEME — Dark Mode */
 /* @media (prefers-color-scheme: dark) {
-  :root {
+  @theme {
     --color-background: #0d0d0d;
     --color-background-soft: #1a1a1a;
     --color-background-mute: #2a2a2a;
 
+    --color-nav-active: #5eef8f;
+    --color-nav-hover: #06a771;
+
     --color-border: #343a40;
     --color-border-hover: #495057;
 
-    --header-bg: #0d0d0d;
-    --card-bg: #1e1e2f;
+    --color-btn-green: #1d7f3e;
+    --color-btn-bg: #5eef8f;
+
+    --color-card-bg: #1e2939;
+    --color-card-border: #343a40;
 
     --color-heading: #e9ecef;
     --color-text: #dee2e6;
+    --color-small-text: #ffffff90;
 
-    --btn-color: #1d7f3e;
-    --btn-bg: #5eef8f;
-    --nav-active: #5eef8f;
-    --nav-hover: #06a771;
-    --small-text: #ffffff90;
+    --section-gap: 50px;
+
+    --color-box-shadow: 
+      0 0 3px rgba(127, 251, 203, 0.8),
+      0 0 6px rgba(127, 251, 191, 0.6),
+      0 0 10px rgba(127, 251, 193, 0.5);
   }
 } */
-
+ 
 body {
   min-height: 100dvh;
-  color: var(--color-text);
+  color: var(-header-bg);
   background: var(--color-background);
-  transition:
-    color 0.5s,
-    background-color 0.5s;
+  transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

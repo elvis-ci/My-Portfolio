@@ -12,9 +12,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.17",
     "emailjs-com": "^3.2.0",
     "express": "^5.1.0",
     "node-fetch": "^3.3.2",
+    "tailwindcss": "^4.1.17",
+    "vite-plugin-sitemap": "^0.8.2",
     "vue": "^3.5.18",
     "vue-easy-lightbox": "^1.19.0",
     "vue-router": "^4.5.1",

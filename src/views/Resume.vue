@@ -1,530 +1,479 @@
-<script>
-export default {
-  name: "resume",
-  mounted() {
-    const faders = document.querySelectorAll(".fade-in");
-    const sliders = document.querySelectorAll(".slide-in");
-    const appearOptions = {
-      threshold: 0,
-      rootMargin: "0px 0px -10px 0px",
-    };
-    const appearOnScroll = new IntersectionObserver(function (
-      entries,
-      appearOnScroll
-    ) {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        } else {
-          entry.target.classList.add("appear");
-          appearOnScroll.unobserve(entry.target);
-        }
-      });
-    },
-    appearOptions);
+<script setup>
+import { onMounted, ref } from "vue";
 
-    faders.forEach((fader) => {
-      appearOnScroll.observe(fader);
-    });
-    sliders.forEach((slider) => {
-      appearOnScroll.observe(slider);
-    });
-
-    // Carousel dots logic
-    const carousel = document.querySelector(".skill-carousel");
-    const items = document.querySelectorAll(".skillset-col");
-    const dotsContainer = document.querySelector(".carousel-dots");
-
-    if (carousel && dotsContainer) {
-      items.forEach((_, i) => {
-        const dot = document.createElement("span");
-        dot.classList.add("dot");
-        if (i === 0) dot.classList.add("active");
-        dotsContainer.appendChild(dot);
-      });
-
-      const dots = dotsContainer.querySelectorAll(".dot");
-      carousel.addEventListener("scroll", () => {
-        const scrollLeft = carousel.scrollLeft;
-        const itemWidth = items[0].offsetWidth + 12; // account for margin
-        const index = Math.round(scrollLeft / itemWidth);
-        dots.forEach((d, i) => d.classList.toggle("active", i === index));
-      });
-    }
+/* ---------------------------------------------------
+   EXPERIENCE DATA (DYNAMIC)
+--------------------------------------------------- */
+const experienceLeft = ref([
+  {
+    role: "Frontend Developer",
+    company: "Dreacot Digital",
+    period: "2023 – Present",
+    location: "Lagos, Nigeria",
+    points: [
+      "Optimized website performance with code splitting, lazy loading, and asset optimization for faster rendering and SEO improvements.",
+      "Developed interactive frontend features including Smart Form Validation and system preference theme selection.",
+      "Ensured WCAG-compliant development to meet legal accessibility obligations and significantly improve screen reader compatibility, keyboard navigation, and inclusive user experience.",
+    ],
   },
-};
+  {
+    role: "Web Developer",
+    company: "Freelance",
+    period: "2022 – 2024",
+    location: "Remote",
+    points: [
+      "Developed responsive, high-performance websites optimized for accessibility, SEO, and user engagement.",
+      "Built scalable online learning and business platforms with modern frontend technologies.",
+      "Improved product usability and digital inclusion by applying WCAG standards and collaborating closely with cross-functional teams.",
+    ],
+  },
+]);
+
+const experienceRight = ref([
+  {
+    role: "Web Accessibility Intern",
+    company: "Anvaya Feats - 501c3",
+    period: "04/2025 – 07/2025",
+    location: "Remote",
+    points: [
+      "Created technical documentation and accessibility instructional guides.",
+      "Designed scalable remote learning platforms for inclusive education.",
+      "Supported digital inclusion through accessible design and inclusive team collaboration.",
+    ],
+  },
+  {
+    role: "Web Accessibility Specialist",
+    company: "Freelance",
+    period: "2025 – Present",
+    location: "Remote",
+    points: [
+      "Created technical documentation and accessibility instructional guides.",
+      "Designed scalable remote learning platforms for inclusive education.",
+      "Supported digital inclusion through accessible design and inclusive team collaboration.",
+    ],
+  },
+]);
+
+/* ---------------------------------------------------
+   EDUCATION DATA
+--------------------------------------------------- */
+const education = ref([
+  {
+    degree: "B.Sc. in Biochemistry",
+    school: "Nnamdi Azikiwe University",
+    period: "2018 – 2021",
+    location: "Nigeria",
+  },
+]);
+
+/* ---------------------------------------------------
+   CERTIFICATIONS DATA
+--------------------------------------------------- */
+const certifications = ref([
+  {
+    title: "DHS Section 508 Trusted Tester Certification",
+    issuer: "U.S. Department of Homeland Security",
+    credentialId: "TT-2509-077**",
+    link: null,
+  },
+  {
+    title: "Career Essentials in Generative AI",
+    issuer: "Microsoft and LinkedIn",
+    credentialId: "...cfc13a5583f41",
+    link: "https://media.licdn.com/dms/image/v2/D4D22AQHZua-mx0jn4g/feedshare-shrink_1280/B4DZe4tnzoH4Ao-/0/1751150657019",
+  },
+  {
+    title: "Data Analytics",
+    issuer: "ALX Africa",
+    credentialId: "LrhyeXCfP9",
+    link: "https://intranet.alxswe.com/certificates/LrhyeXCfP9",
+  },
+]);
+
+/* ---------------------------------------------------
+   SKILLSET DATA — MATCHES THE IMAGE EXACTLY + ICONS
+--------------------------------------------------- */
+const skillset = ref([
+  {
+    category: "Language",
+    skills: [
+      {
+        name: "JavaScript (ES6+)",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      },
+      {
+        name: "TypeScript",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      },
+      {
+        name: "HTML5",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+      },
+      {
+        name: "CSS3",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+      },
+      {
+        name: "SQL",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      },
+    ],
+  },
+  {
+    category: "Frontend",
+    skills: [
+      {
+        name: "Vue.js",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+      },
+      {
+        name: "Nuxt",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxt/nuxt-original.svg",
+      },
+      {
+        name: "React",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      },
+      {
+        name: "TailwindCSS",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+      },
+      {
+        name: "Bootstrap",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg",
+      },
+      {
+        name: "Responsive Design",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+      },
+      {
+        name: "Wordpress",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
+      },
+      {
+        name: "Flutter",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+      },
+    ],
+  },
+  {
+    category: "Backend",
+    skills: [
+      {
+        name: "Node.js",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+      },
+      {
+        name: "Express.js",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+      },
+      {
+        name: "supabase",
+        icon: "https://seeklogo.com/images/S/supabase-logo-8F2C5A0C2D-seeklogo.com.png",
+      },
+    ],
+  },
+  {
+    category: "Accessibility Testing & Audit",
+    skills: [
+      {
+        name: "WCAG 2.1",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/accessibility/accessibility-original.svg",
+      },
+      {
+        name: "Section 508",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/accessibility/accessibility-original.svg",
+      },
+      {
+        name: "Axe",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      },
+      {
+        name: "WAVE",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      },
+      {
+        name: "ANDI",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      },
+      {
+        name: "Keyboard Navigation",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keyboard/keyboard-original.svg",
+      },
+      {
+        name: "Screen Reader Testing (NVDA, JAWS)",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/accessibility/accessibility-original.svg",
+      },
+      {
+        name: "Manual Edge-case Testing",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bugzilla/bugzilla-original.svg",
+      },
+    ],
+  },
+  {
+    category: "Team Collaboration",
+    skills: [
+      {
+        name: "Git",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+      },
+      {
+        name: "GitHub",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+      },
+      {
+        name: "Slack",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg",
+      },
+      {
+        name: "MS Teams",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoft/microsoft-original.svg",
+      },
+      {
+        name: "Discord",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/discord/discord-original.svg",
+      },
+      {
+        name: "Technical Documentation",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg",
+      },
+    ],
+  },
+  {
+    category: "Professional Skills",
+    skills: [
+      {
+        name: "Agile",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg",
+      },
+      {
+        name: "RISE Feedback",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg",
+      },
+      {
+        name: "Problem-solving",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/brain/brain-original.svg",
+      },
+      {
+        name: "Time Management",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/clock/clock-original.svg",
+      },
+      {
+        name: "Continuous Learning",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/book/book-original.svg",
+      },
+    ],
+  },
+]);
+
+//  ANIMATIONS + CAROUSEL LOGIC
+onMounted(() => {
+  const faders = document.querySelectorAll(".fade-in");
+  const sliders = document.querySelectorAll(".slide-in");
+
+  const appearOptions = {
+    threshold: 0,
+    rootMargin: "0px 0px -10px 0px",
+  };
+
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("appear");
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach((el) => appearOnScroll.observe(el));
+  sliders.forEach((el) => appearOnScroll.observe(el));
+
+  /* Carousel Dots */
+  const carousel = document.querySelector(".skill-carousel");
+  const items = document.querySelectorAll(".skillset-col");
+  const dotsContainer = document.querySelector(".carousel-dots");
+
+  if (carousel && dotsContainer) {
+    items.forEach((_, i) => {
+      const dot = document.createElement("span");
+      dot.classList.add("dot");
+      if (i === 0) dot.classList.add("active");
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll(".dot");
+
+    carousel.addEventListener("scroll", () => {
+      const scrollLeft = carousel.scrollLeft;
+      const itemWidth = items[0].offsetWidth + 12;
+      const index = Math.round(scrollLeft / itemWidth);
+
+      dots.forEach((d, i) => d.classList.toggle("active", i === index));
+    });
+  }
+});
 </script>
-
 <template>
-  <main>
-    <section class="resume px-4">
-      <div class="container">
-        <!-- Header -->
-        <div class="section-header text-center">
-          <h1 class="section-title">My Resume</h1>
-          <p class="section-subtitle">
-            Here’s a quick overview of my professional experience, education,
-            certifications, and skill set as a Web Developer and Accessibility
-            Specialist.
-          </p>
-        </div>
+  <main id="main-content" class="px-4 py-10 max-w-7xl mx-auto text-text">
+      <!-- HEADER -->
+      <section class="text-center mb-12">
+        <h1 class="text-4xl font-extrabold text-heading">My Resume</h1>
+        <p class="text-base sm:text-lg text-color-text mt-4 max-w-2xl mx-auto">
+          Here’s a quick overview of my professional experience, education,
+          certifications, and skill set as a Web Developer and Accessibility
+          Specialist.
+        </p>
+      </section>
 
-        <!-- Experience -->
-        <section class="resume-section">
-          <h2 class="sub-section-title">
-            <i class="icon ion-md-briefcase"></i> Experience
-          </h2>
-          <div class="row experience-columns mt-4">
-            <!-- Web Development Column -->
-            <div class="col-md-6 experience-col">
-              <ul class="experience-list">
-                <li class="experience-item mb-5">
-                  <h3 class="item-header">Frontend Developer</h3>
-                  <div class="resume-company">
-                    <p>Dreacot Digital (2023 – Present)</p>
-                    <p class="location">– Lagos, Nigeria</p>
-                  </div>
-                  <ul class="resume-text">
-                    <li>
-                      Optimized website performance by reducing page load time
-                      through code splitting, lazy loading, and asset
-                      optimization, ensuring faster rendering, scalability, and
-                      SEO performance.
-                    </li>
-                    <li>
-                      Developed and deployed interactive frontend features,
-                      including Smart Form Validation Systems using JavaScript
-                      and AI-powered libraries, and system preference based
-                      theme selection, enhancing data accuracy and usability.
-                    </li>
-                    <li>
-                      Implemented accessibility standards across web
-                      applications, improving screen reader compatibility,
-                      keyboard navigation, and inclusive user experience for
-                      diverse users.
-                    </li>
-                  </ul>
-                </li>
-                <li class="experience-item mb-5 fade-in slide-in from-bottom">
-                  <h3 class="item-header">Web Developer</h3>
-                  <div class="resume-company">
-                    <p>Freelance (2022 – 2024)</p>
-                    <p class="location">– Remote</p>
-                  </div>
-                  <ul class="resume-text">
-                    <li>
-                      Created technical documentation using Google Docs,
-                      including a user-friendly instructional guide on web
-                      accessibility best practices.
-                    </li>
-                    <li>
-                      Leveraged technical and strategic skills to design a
-                      scalable learning platform focused on delivering remote,
-                      affordable, and inclusive education to diverse learners.
-                    </li>
-                    <li>
-                      Supported digital inclusion at Anvaya Feats through
-                      accessible design, effective team collaboration using the
-                      RISE framework for clear, inclusive communication.
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
+      <!-- EXPERIENCE -->
+      <section class="mb-18">
+        <h2
+          class="text-xl sm:text-2xl md:text-3xl font-bold text-text mb-6 flex items-center gap-2"
+        >
+          <i class="icon ion-md-briefcase text-btn-bg"></i> Experience
+        </h2>
 
-            <!-- Accessibility Column -->
-            <div class="col-md-6 experience-col">
-              <ul class="experience-list">
-                <li class="experience-item mb-5">
-                  <h3 class="item-header">Web Accessibility Intern</h3>
-                  <div class="resume-company">
-                    <p>Anvaya Feats - 501c3 (04/2025 – 07/2025)</p>
-                    <p class="location">– Remote</p>
-                  </div>
-                  <ul class="resume-text">
-                    <li>
-                      Created technical documentation using Google Docs,
-                      including a user-friendly instructional guide on web
-                      accessibility best practices.
-                    </li>
-                    <li>
-                      Leveraged technical and strategic skills to design a
-                      scalable learning platform focused on delivering remote,
-                      affordable, and inclusive education to diverse learners.
-                    </li>
-                    <li>
-                      Supported digital inclusion at Anvaya Feats through
-                      accessible design, effective team collaboration using the
-                      RISE framework for clear, inclusive communication.
-                    </li>
-                  </ul>
-                </li>
-                <li class="experience-item fade-in slide-in from-bottom">
-                  <h3 class="item-header">Web Accessibility Specialist</h3>
-                  <div class="resume-company">
-                    <p>Freelance (2025 – Present)</p>
-                    <p class="location">– Remote</p>
-                  </div>
-                  <ul class="resume-text">
-                    <li>
-                      Created technical documentation using Google Docs,
-                      including a user-friendly instructional guide on web
-                      accessibility best practices.
-                    </li>
-                    <li>
-                      Leveraged technical and strategic skills to design a
-                      scalable learning platform focused on delivering remote,
-                      affordable, and inclusive education to diverse learners.
-                    </li>
-                    <li>
-                      Supported digital inclusion at Anvaya Feats through
-                      accessible design, effective team collaboration using the
-                      RISE framework for clear, inclusive communication.
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- Education -->
-        <section class="resume-section">
-          <h2 class="sub-section-title">
-            <i class="icon ion-md-school"></i> Education
-          </h2>
-          <ul class="education-list mt-4 fade-in slide-in from-bottom">
-            <li class="education-item col-md-6">
-              <h3 class="item-header">B.Sc. in Biochemistry</h3>
-              <div class="resume-company">
-                <p>Nnamdi Azikiwe University (2018 – 2021)</p>
-                <p class="location">– Nigeria</p>
-              </div>
-              <p class="resume-text">
-                Completed thesis research that strengthened my ability to follow
-                structured processes and adhere to standard practices in
-                research and documentation. This discipline now informs my
-                approach to accessibility, user experience, and overall software
-                development, where consistency, precision, and evidence-based
-                methods are key to creating effective and inclusive solutions.
-              </p>
-            </li>
-          </ul>
-        </section>
-
-        <!-- Certifications -->
-        <section class="resume-section">
-          <h2 class="sub-section-title">
-            <i class="icon ion-md-ribbon"></i> Certifications
-          </h2>
-          <ul class="cert-list mt-4 fade-in slide-in from-bottom">
-            <li>
-              <h3 class="item-header">
-                DHS Section 508 Trusted Tester Certification
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- LEFT -->
+          <div class="space-y-8">
+            <div
+              v-for="(exp, index) in experienceLeft"
+              :key="'left-' + index"
+              class="fade-in slide-in py-6 px-3 md:px-6 rounded-xl shadow-custom border-b-2 border-color-text"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-2">
+                {{ exp.role }}
               </h3>
-              <div class="resume-company">
-                <p class="location">
-                  <span class="label fw-bold">Issued by:</span>U.S. Department
-                  of Homeland Security
-                </p>
-                <p>
-                  <span class="label fw-bold">Credential ID:</span>
-                  TT-2509-07779
-                </p>
-              </div>
-            </li>
-            <li>
-              <h3 class="item-header">Career Essentials in Generative AI</h3>
-              <div class="resume-company">
-                <p class="location">
-                  <span class="label fw-bold">Issued by: </span>Microsoft and
-                  LinkedIn
-                </p>
-                <p>
-                  <span class="label fw-bold">Credential ID:</span>
-                  <a
-                    href="https://media.licdn.com/dms/image/v2/D4D22AQHZua-mx0jn4g/feedshare-shrink_1280/B4DZe4tnzoH4Ao-/0/1751150657019?e=1760572800&v=beta&t=y4zV0Ij2fQDzxDCsU7s732bm2w62E5BnEAKhVikJIxY"
-                    class="location"
-                    aria-label="Open link to verify my Generative AI Certification"
-                    >...cfc13a5583f41</a
-                  >
-                </p>
-              </div>
-            </li>
-            <li>
-              <h3 class="item-header">Data Analytics</h3>
-              <div class="resume-company">
-                <p class="location">
-                  <span class="label fw-bold">Issued by: </span>ALX Africa
-                </p>
-                <p>
-                  <span class="label fw-bold">Credential ID: </span>
-                  <a
-                    href="https://intranet.alxswe.com/certificates/LrhyeXCfP9"
-                    class="location"
-                    aria-label="Open link to verify my Generative AI Certification"
-                    >LrhyeXCfP9</a
-                  >
-                </p>
-              </div>
-            </li>
-          </ul>
-        </section>
-
-        <!-- Skillset -->
-        <section class="resume-section">
-          <h2 class="sub-section-title">
-            <i class="icon ion-md-code-working"></i> Skillset
-          </h2>
-
-          <!-- Scrollable Carousel -->
-          <div class="skill-carousel mt-4 d-flex flex-nowrap overflow-auto">
-            <div
-              class="skillset-col fade-in slide-in from-bottom flex-shrink-0 me-3 p-3"
-            >
-              <h3 class="skill-group">Web Development</h3>
-              <ul class="skill-list">
-                <li>Responsive Web Design (HTML5, CSS3)</li>
-                <li>Modern JavaScript (ES6+)</li>
-                <li>Frontend Frameworks (Vue.js, React)</li>
-                <li>Component-based Styling (Tailwind CSS, Bootstrap)</li>
-                <li>Cross-browser & Cross-device Compatibility</li>
-                <li>Performance Optimization & Best Practices</li>
-              </ul>
-            </div>
-
-            <div
-              class="skillset-col fade-in slide-in from-bottom flex-shrink-0 me-3 p-3"
-            >
-              <h3 class="skill-group">Web Accessibility</h3>
-              <ul class="skill-list">
-                <li>WCAG 2.1 & Section 508 Standards</li>
-                <li>Accessible HTML Semantics & ARIA Roles</li>
-                <li>Inclusive Design & Usability Patterns</li>
-                <li>Keyboard & Assistive Technology Support</li>
-                <li>Accessibility-first Development Approach</li>
-              </ul>
-            </div>
-
-            <div
-              class="skillset-col fade-in slide-in from-bottom flex-shrink-0 me-3 p-3"
-            >
-              <h3 class="skill-group">Accessibility Testing & Audit Report</h3>
-              <ul class="skill-list">
-                <li>Automated Tools (ANDI, Axe, WAVE)</li>
-                <li>Screen Reader Testing (NVDA, JAWS)</li>
-                <li>Manual Testing for Edge Cases</li>
-                <li>Compliance Audits & Reporting</li>
-                <li>Remediation & Continuous Monitoring</li>
-              </ul>
-            </div>
-
-            <div
-              class="skillset-col fade-in slide-in from-bottom flex-shrink-0 p-3"
-            >
-              <h3 class="skill-group">Communication & Collaboration</h3>
-              <ul class="skill-list">
-                <li>Version Control & Collaboration (Git, GitHub)</li>
-                <li>Team Communication Tools (Slack, Discord, MS Teams)</li>
-                <li>Agile & Scrum Methodologies</li>
-                <li>Constructive Feedback (RISE Model)</li>
-                <li>Technical Documentation & Knowledge Sharing</li>
-                <li>Cross-functional Team Collaboration</li>
+              <p class="text-color-text text-sm sm:text-base mb-1">
+                {{ exp.company }} ({{ exp.period }})
+              </p>
+              <p class="italic text-color-text mb-3 text-xs sm:text-sm">
+                – {{ exp.location }}
+              </p>
+              <ul
+                class="list-disc pl-5 space-y-2 text-color-text text-sm sm:text-base"
+              >
+                <li v-for="(point, i) in exp.points" :key="i">{{ point }}</li>
               </ul>
             </div>
           </div>
 
-          <!-- Carousel dots -->
-          <div class="carousel-dots text-center mt-3"></div>
-        </section>
-      </div>
-    </section>
+          <!-- RIGHT -->
+          <div class="space-y-8">
+            <div
+              v-for="(exp, index) in experienceRight"
+              :key="'right-' + index"
+              class="fade-in slide-in py-6 px-3 md:px-6 rounded-xl shadow-custom border-b-2 border-color-text"
+            >
+              <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-2">
+                {{ exp.role }}
+              </h3>
+              <p class="text-color-text text-sm sm:text-base mb-1">
+                {{ exp.company }} ({{ exp.period }})
+              </p>
+              <p class="italic text-color-text mb-3 text-xs sm:text-sm">
+                – {{ exp.location }}
+              </p>
+              <ul
+                class="list-disc pl-5 space-y-2 text-color-text text-sm sm:text-base"
+              >
+                <li v-for="(point, i) in exp.points" :key="i">{{ point }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section class="mb-18">
+        <h2
+          class="text-xl sm:text-2xl md:text-3xl font-bold text-text mb-6 flex items-center gap-2"
+        >
+          <i class="icon ion-md-school text-btn-bg"></i> Education
+        </h2>
+
+        <div class="fade-in slide-in space-y-6 md:grid md:grid-cols-2 gap-8">
+          <div
+            v-for="(edu, i) in education"
+            :key="'edu-' + i"
+            class="py-6 px-3 md:px-6 bg-card-bg rounded-xl shadow-custom border-b-2 border-color-text"
+          >
+            <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-2">
+              {{ edu.degree }}
+            </h3>
+            <p class="text-color-text mb-1 text-sm sm:text-base">
+              {{ edu.school }} ({{ edu.period }})
+            </p>
+            <p class="italic text-color-text text-xs sm:text-sm">
+              – {{ edu.location }}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS -->
+      <section class="mb-18">
+        <h2
+          class="text-xl sm:text-2xl md:text-3xl font-bold text-text mb-6 flex items-center gap-2"
+        >
+          <i class="icon ion-md-ribbon text-btn-bg"></i> Certifications
+        </h2>
+
+        <ul class="space-y-6">
+          <li
+            v-for="(cert, i) in certifications"
+            :key="'cert-' + i"
+            class="w-fit py-6 px-3 md:px-6 bg-card-bg rounded-xl shadow-custom border-b-2 border-color-text"
+          >
+            <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-2">
+              {{ cert.title }}
+            </h3>
+            <p class="text-color-text mb-1 text-sm sm:text-base">
+              <span class="font-semibold">Issued by:</span> {{ cert.issuer }}
+            </p>
+            <p class="text-color-text text-xs sm:text-sm flex items-center">
+              <span class="font-semibold">Credential ID:</span>
+              <template v-if="cert.link">
+                <a :href="cert.link" target="_blank" class="underline ml-2">{{
+                  cert.credentialId
+                }}</a>
+              </template>
+              <template v-else>
+                <span class="ml-2">{{ cert.credentialId }}</span>
+              </template>
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- SKILLSET -->
+      <section>
+        <h2
+          class="text-xl sm:text-2xl md:text-3xl font-bold text-text mb-4 flex items-center gap-2"
+        >
+          <i class="icon ion-md-code-working text-btn-bg"></i>Tools & Skillset
+        </h2>
+
+        <div class="flex flex-wrap gap-2">
+          <div
+            v-for="(skill, i) in skillset"
+            :key="i"
+            class="py-3 sm:py-4 px-3 md:px-6 bg-card-bg rounded-xl shadow-custom fade-in slide-in"
+          >
+            <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-4">
+              {{ skill.category }}
+            </h3>
+            <ul class="flex flex-wrap gap-2">
+              <li
+                v-for="(s, j) in skill.skills"
+                :key="j"
+                class="px-3 py-1 bg-btn-bg/10 text-btn-bg rounded-full text-xs sm:text-sm font-medium border border-btn-bg/20 flex items-center gap-2"
+              >
+                <img :src="s.icon" alt="" class="w-4 h-4 sm:w-5 sm:h-5" />
+                {{ s.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
   </main>
 </template>
-
-<style scoped>
-.section-subtitle {
-  font-size: 1.3rem;
-}
-
-/* EXPERIENCE & EDUCATION — unchanged */
-.experience-columns {
-  margin-top: 20px;
-}
-.experience-col {
-  position: relative;
-  padding: 0 20px;
-}
-.experience-col:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: -1px;
-  width: 1px;
-  height: 100%;
-  background: var(--btn-bg);
-  box-shadow: var(--box-shadow);
-}
-.experience-col:last-child::after {
-  display: none;
-}
-.experience-list {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-.experience-item {
-  margin-bottom: 2rem;
-}
-.experience-item:last-child {
-  margin-bottom: 0;
-}
-.resume-role {
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: var(--btn-bg);
-}
-.item-header {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--btn-bg);
-}
-.resume-company p {
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--color-text);
-  margin: 0 !important;
-}
-.location {
-  font-size: 1.1rem !important;
-  font-style: italic;
-  color: var(--color-text);
-}
-.resume-text {
-  font-size: 1.1rem;
-  color: var(--color-text);
-  line-height: 1.6;
-}
-.resume-text li {
-  margin-bottom: 8px;
-}
-.education-list {
-  list-style: none;
-  margin: 0;
-}
-.cert-list {
-  list-style: none;
-  font-size: 1rem;
-  color: var(--color-text);
-}
-.cert-list li {
-  margin-bottom: 30px;
-}
-.label {
-  margin-right: 12px;
-}
-
-/* SKILLSET SECTION */
-.skill-carousel {
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-.skillset-col {
-  background: var(--bg);
-  border-radius: 1rem;
-  min-width: 90%;
-  scroll-snap-align: center;
-}
-.skillset-col:last-child {
-  margin-right: 0;
-}
-.skill-group {
-  height: 70px;
-  font-weight: 700;
-  color: var(--btn-bg);
-  font-size: 1.3rem;
-}
-.skill-list {
-  list-style: circle;
-  font-size: 1.1rem;
-  color: var(--color-text);
-  padding-left: 20px;
-}
-.skill-list li {
-  margin-bottom: 6px;
-}
-
-/* Carousel Dots */
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-.dot {
-  width: 10px;
-  height: 10px;
-  background: var(--color-text);
-  opacity: 0.4;
-  border-radius: 50%;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.dot.active {
-  opacity: 1;
-  transform: scale(1.2);
-  background: var(--btn-bg);
-}
-
-/* Hide horizontal scrollbar on mobile */
-.skill-carousel::-webkit-scrollbar {
-  display: none;
-}
-
-/* Restore grid layout on large screens */
-@media (min-width: 992px) {
-  .skill-carousel {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr);
-    overflow: visible !important;
-  }
-  .skillset-col {
-    min-width: auto !important;
-  }
-
-  .skillset-col::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -1px;
-    width: 1px;
-    height: 100%;
-    background: var(--btn-bg);
-    box-shadow: var(--box-shadow);
-  }
-  .skillset-col:last-child::after {
-    display: none;
-  }
-
-  /* Hide dots on large screens */
-  .carousel-dots {
-    display: none;
-  }
-}
-
-/* Remove divider line for smaller screens */
-@media (max-width: 767.98px) {
-  .experience-col:after {
-    display: none;
-  }
-  .skill-group {
-    height: 30px;
-  }
-}
-@media (max-width: 992px) {
-  .skillset-col {
-    box-shadow: var(--box-shadow);
-  }
-  .skill-group {
-  height: 40px;
-  }
-}
-</style>

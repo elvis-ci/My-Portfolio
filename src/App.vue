@@ -1,108 +1,54 @@
-<script>
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 import Navbar from "@/components/Navbar.vue";
-export default {
-  name: "App",
-  components: {
-    Navbar,
-    RouterLink,
-    RouterView,
-  },
-  mounted() {
-    const backToTop = document.getElementById("back-to-top");
 
-    // Show/hide button on scroll
-    window.addEventListener("scroll", () => {
-      if (
-        document.body.scrollTop > 100 ||
-        document.documentElement.scrollTop > 100
-      ) {
-        backToTop.style.display = "flex";
-      } else {
-        backToTop.style.display = "none";
-      }
-    });
+const showBackToTop = ref(false);
 
-    // Scroll to top when clicked
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-  },
+const handleScroll = () => {
+  showBackToTop.value = window.scrollY > 100;
 };
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 </script>
 
 <template>
-  <div id="app">
-    <header id="topnav">
-      <Navbar />
-    </header>
+  <div id="app" class="max-w-[1400px] mx-auto relative">
+    <Navbar />
     <RouterView />
-    <footer class="text-center py-4">
+
+    <footer class="text-center py-4 bg-background text-text">
       <p>&copy; 2024 Elvis. All rights reserved.</p>
     </footer>
-    <!-- Back to top -->
-    <button
-      href="javascript: void(0);"
-      class="btn btn-icon btn-primary back-to-top"
-      id="back-to-top"
-      v-scroll-to="'#topnav'"
-    >
-      <span class="icons">^</span>
-    </button>
+
+    <!-- Back to top button -->
+<!-- <button
+  v-if="showBackToTop"
+  @click="scrollToTop"
+  class="fixed btt bottom-7 right-7 h-10 w-10 flex items-center justify-center shadow-lg bg-btn-bg transition-transform duration-300 hover:rotate-45 focus:outline-none focus:ring-4 focus:ring-accent/50"
+>
+  <span class="text-white font-extrabold transition-transform duration-300">^</span>
+</button> -->
   </div>
 </template>
 
-<style>
-.fade-in {
-  opacity: 0;
-  transition: opacity 250ms ease-in;
+<style scoped>
+.btt {
+  z-index: 1000;
+  border-radius: 10px;
 }
 
-.fade-in.appear {
-  opacity: 1;
-}
-.from-bottom {
-  transform: translateY(100px);
-  opacity: 0;
-  transition: transform 350ms ease-in, opacity 300ms ease-in;
-}
-.from-bottom.appear {
-  transform: translateY(0px);
-  opacity: 1;
-  transition: transform 350ms ease-in, opacity 300ms ease-in;
-}
-
-.back-to-top {
-  z-index: 99;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  display: none;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  height: 40px;
-  width: 40px;
-  background-color: var(--btn-bg);
-  justify-content: center;
-  align-items: center;
-}
-
-.back-to-top .icons {
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-.back-to-top:hover {
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  background-color: var(--btn-bg);
-}
-
-.back-to-top:hover .icons {
-  -webkit-transform: rotate(-45deg);
+.btt:hover > span {
   transform: rotate(-45deg);
 }
 </style>
