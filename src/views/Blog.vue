@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from "vue";
 import BlogArticle from "@/components/BlogArticle.vue";
-
 import leftbehind from "@/assets/imgs/thumbnails/left-behind.jpg";
 import barriersToBridges from "@/assets/imgs/thumbnails/barriers-to-bridges.png";
 import anvaya from "@/assets/imgs/thumbnails/anvaya.jpg";

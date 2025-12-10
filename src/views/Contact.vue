@@ -144,17 +144,11 @@ const sendEmail = async () => {
             Contact Info
           </h2>
           <p class="mb-4">
-            Available for freelance work and collaborations. Feel free to reach
-            out!
+            I'm ocassionally available for freelance work and collaborations. Feel free to reach
+            out.
           </p>
 
           <div class="flex flex-col space-y-4">
-            <!-- Location -->
-            <div class="flex items-center gap-3">
-              <i class="icon ion-md-pin text-xl"></i>
-              <span>Lagos, Nigeria</span>
-            </div>
-
             <!-- Phone -->
             <div class="flex items-center gap-3">
               <i class="icon ion-md-call text-xl"></i>
@@ -218,9 +212,6 @@ const sendEmail = async () => {
               rel="noreferrer"
               aria-label="GitHub Profile link"
               ><i class="icon ion-logo-github"></i
-            ></a>
-            <a href="mailto:izuegbuelvis@gmail.com" aria-label="email link"
-              ><i class="icon ion-md-mail"></i
             ></a>
           </div>
         </div>

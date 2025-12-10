@@ -117,6 +117,10 @@ const skillset = ref([
         name: "SQL",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
       },
+      {
+        name: "Dart",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg",
+      },
     ],
   },
   {
@@ -135,7 +139,7 @@ const skillset = ref([
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
       },
       {
-        name: "TailwindCSS",
+        name: "Tailwind",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
       },
       {
@@ -151,6 +155,18 @@ const skillset = ref([
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
       },
       {
+        name: "Wix",
+        icon: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Wix_logo_svg.svg",
+      },
+      {
+        name: "Shopify",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/shopify/shopify-original.svg",},
+
+      {
+        name: "API Integration",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
+      },
+      {
         name: "Flutter",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
       },
@@ -160,16 +176,16 @@ const skillset = ref([
     category: "Backend",
     skills: [
       {
-        name: "Node.js",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-      },
-      {
-        name: "Express.js",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-      },
-      {
         name: "supabase",
-        icon: "https://seeklogo.com/images/S/supabase-logo-8F2C5A0C2D-seeklogo.com.png",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg",
+      },
+      {
+        name: "Firebase",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+      },
+      {
+        name: "Node.js (Elementary)",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
       },
     ],
   },
@@ -189,16 +205,15 @@ const skillset = ref([
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
       },
       {
+        name: "ARC Toolkit",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",},
+      {
         name: "WAVE",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
       },
       {
         name: "ANDI",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-      },
-      {
-        name: "Keyboard Navigation",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/keyboard/keyboard-original.svg",
       },
       {
         name: "Screen Reader Testing (NVDA, JAWS)",
@@ -214,12 +229,12 @@ const skillset = ref([
     category: "Team Collaboration",
     skills: [
       {
-        name: "Git",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-      },
-      {
         name: "GitHub",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+      },
+      {
+        name: "Git",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
       },
       {
         name: "Slack",
@@ -232,10 +247,6 @@ const skillset = ref([
       {
         name: "Discord",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/discord/discord-original.svg",
-      },
-      {
-        name: "Technical Documentation",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg",
       },
     ],
   },
@@ -314,166 +325,166 @@ onMounted(() => {
 </script>
 <template>
   <main id="main-content" class="px-4 py-10 max-w-7xl mx-auto text-text">
-      <!-- HEADER -->
-      <section class="text-center mb-12">
-        <h1 class="text-4xl font-extrabold text-heading">My Resume</h1>
-        <p class="text-base sm:text-lg text-color-text mt-4 max-w-2xl mx-auto">
-          Here’s a quick overview of my professional experience, education,
-          certifications, and skill set as a Web Developer and Accessibility
-          Specialist.
-        </p>
-      </section>
+    <!-- HEADER -->
+    <section class="text-center mb-12">
+      <h1 class="text-4xl font-extrabold text-heading">My Resume</h1>
+      <p class="text-base sm:text-lg text-color-text mt-4 max-w-2xl mx-auto">
+        Here’s a quick overview of my professional experience, education,
+        certifications, and skill set as a Web Developer and Accessibility
+        Specialist.
+      </p>
+    </section>
 
-      <!-- EXPERIENCE -->
-      <section class="mb-18">
-        <h2
-          class="text-xl sm:text-2xl md:text-3xl font-bold text-text mb-6 flex items-center gap-2"
-        >
-          <i class="icon ion-md-briefcase text-btn-bg"></i> Experience
-        </h2>
+    <!-- EXPERIENCE -->
+    <section class="mb-18">
+      <h2
+        class="text-xl sm:text-2xl md:text-3xl font-bold text-text mb-6 flex items-center gap-2"
+      >
+        <i class="icon ion-md-briefcase text-btn-bg"></i> Experience
+      </h2>
 
-        <div class="grid md:grid-cols-2 gap-8">
-          <!-- LEFT -->
-          <div class="space-y-8">
-            <div
-              v-for="(exp, index) in experienceLeft"
-              :key="'left-' + index"
-              class="fade-in slide-in py-6 px-3 md:px-6 rounded-xl shadow-custom border-b-2 border-color-text"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-2">
-                {{ exp.role }}
-              </h3>
-              <p class="text-color-text text-sm sm:text-base mb-1">
-                {{ exp.company }} ({{ exp.period }})
-              </p>
-              <p class="italic text-color-text mb-3 text-xs sm:text-sm">
-                – {{ exp.location }}
-              </p>
-              <ul
-                class="list-disc pl-5 space-y-2 text-color-text text-sm sm:text-base"
-              >
-                <li v-for="(point, i) in exp.points" :key="i">{{ point }}</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- RIGHT -->
-          <div class="space-y-8">
-            <div
-              v-for="(exp, index) in experienceRight"
-              :key="'right-' + index"
-              class="fade-in slide-in py-6 px-3 md:px-6 rounded-xl shadow-custom border-b-2 border-color-text"
-            >
-              <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-2">
-                {{ exp.role }}
-              </h3>
-              <p class="text-color-text text-sm sm:text-base mb-1">
-                {{ exp.company }} ({{ exp.period }})
-              </p>
-              <p class="italic text-color-text mb-3 text-xs sm:text-sm">
-                – {{ exp.location }}
-              </p>
-              <ul
-                class="list-disc pl-5 space-y-2 text-color-text text-sm sm:text-base"
-              >
-                <li v-for="(point, i) in exp.points" :key="i">{{ point }}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- EDUCATION -->
-      <section class="mb-18">
-        <h2
-          class="text-xl sm:text-2xl md:text-3xl font-bold text-text mb-6 flex items-center gap-2"
-        >
-          <i class="icon ion-md-school text-btn-bg"></i> Education
-        </h2>
-
-        <div class="fade-in slide-in space-y-6 md:grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- LEFT -->
+        <div class="space-y-8">
           <div
-            v-for="(edu, i) in education"
-            :key="'edu-' + i"
-            class="py-6 px-3 md:px-6 bg-card-bg rounded-xl shadow-custom border-b-2 border-color-text"
+            v-for="(exp, index) in experienceLeft"
+            :key="'left-' + index"
+            class="fade-in slide-in py-6 px-3 md:px-6 rounded-xl shadow-custom border-b-2 border-color-text"
           >
             <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-2">
-              {{ edu.degree }}
+              {{ exp.role }}
             </h3>
-            <p class="text-color-text mb-1 text-sm sm:text-base">
-              {{ edu.school }} ({{ edu.period }})
+            <p class="text-color-text text-sm sm:text-base mb-1">
+              {{ exp.company }} ({{ exp.period }})
             </p>
-            <p class="italic text-color-text text-xs sm:text-sm">
-              – {{ edu.location }}
+            <p class="italic text-color-text mb-3 text-xs sm:text-sm">
+              – {{ exp.location }}
             </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- CERTIFICATIONS -->
-      <section class="mb-18">
-        <h2
-          class="text-xl sm:text-2xl md:text-3xl font-bold text-text mb-6 flex items-center gap-2"
-        >
-          <i class="icon ion-md-ribbon text-btn-bg"></i> Certifications
-        </h2>
-
-        <ul class="space-y-6">
-          <li
-            v-for="(cert, i) in certifications"
-            :key="'cert-' + i"
-            class="w-fit py-6 px-3 md:px-6 bg-card-bg rounded-xl shadow-custom border-b-2 border-color-text"
-          >
-            <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-2">
-              {{ cert.title }}
-            </h3>
-            <p class="text-color-text mb-1 text-sm sm:text-base">
-              <span class="font-semibold">Issued by:</span> {{ cert.issuer }}
-            </p>
-            <p class="text-color-text text-xs sm:text-sm flex items-center">
-              <span class="font-semibold">Credential ID:</span>
-              <template v-if="cert.link">
-                <a :href="cert.link" target="_blank" class="underline ml-2">{{
-                  cert.credentialId
-                }}</a>
-              </template>
-              <template v-else>
-                <span class="ml-2">{{ cert.credentialId }}</span>
-              </template>
-            </p>
-          </li>
-        </ul>
-      </section>
-
-      <!-- SKILLSET -->
-      <section>
-        <h2
-          class="text-xl sm:text-2xl md:text-3xl font-bold text-text mb-4 flex items-center gap-2"
-        >
-          <i class="icon ion-md-code-working text-btn-bg"></i>Tools & Skillset
-        </h2>
-
-        <div class="flex flex-wrap gap-2">
-          <div
-            v-for="(skill, i) in skillset"
-            :key="i"
-            class="py-3 sm:py-4 px-3 md:px-6 bg-card-bg rounded-xl shadow-custom fade-in slide-in"
-          >
-            <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-4">
-              {{ skill.category }}
-            </h3>
-            <ul class="flex flex-wrap gap-2">
-              <li
-                v-for="(s, j) in skill.skills"
-                :key="j"
-                class="px-3 py-1 bg-btn-bg/10 text-btn-bg rounded-full text-xs sm:text-sm font-medium border border-btn-bg/20 flex items-center gap-2"
-              >
-                <img :src="s.icon" alt="" class="w-4 h-4 sm:w-5 sm:h-5" />
-                {{ s.name }}
-              </li>
+            <ul
+              class="list-disc pl-5 space-y-2 text-color-text text-sm sm:text-base"
+            >
+              <li v-for="(point, i) in exp.points" :key="i">{{ point }}</li>
             </ul>
           </div>
         </div>
-      </section>
+
+        <!-- RIGHT -->
+        <div class="space-y-8">
+          <div
+            v-for="(exp, index) in experienceRight"
+            :key="'right-' + index"
+            class="fade-in slide-in py-6 px-3 md:px-6 rounded-xl shadow-custom border-b-2 border-color-text"
+          >
+            <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-2">
+              {{ exp.role }}
+            </h3>
+            <p class="text-color-text text-sm sm:text-base mb-1">
+              {{ exp.company }} ({{ exp.period }})
+            </p>
+            <p class="italic text-color-text mb-3 text-xs sm:text-sm">
+              – {{ exp.location }}
+            </p>
+            <ul
+              class="list-disc pl-5 space-y-2 text-color-text text-sm sm:text-base"
+            >
+              <li v-for="(point, i) in exp.points" :key="i">{{ point }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="mb-18">
+      <h2
+        class="text-xl sm:text-2xl md:text-3xl font-bold text-text mb-6 flex items-center gap-2"
+      >
+        <i class="icon ion-md-school text-btn-bg"></i> Education
+      </h2>
+
+      <div class="fade-in slide-in space-y-6 md:grid md:grid-cols-2 gap-8">
+        <div
+          v-for="(edu, i) in education"
+          :key="'edu-' + i"
+          class="py-6 px-3 md:px-6 bg-card-bg rounded-xl shadow-custom border-b-2 border-color-text"
+        >
+          <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-2">
+            {{ edu.degree }}
+          </h3>
+          <p class="text-color-text mb-1 text-sm sm:text-base">
+            {{ edu.school }} ({{ edu.period }})
+          </p>
+          <p class="italic text-color-text text-xs sm:text-sm">
+            – {{ edu.location }}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="mb-18">
+      <h2
+        class="text-xl sm:text-2xl md:text-3xl font-bold text-text mb-6 flex items-center gap-2"
+      >
+        <i class="icon ion-md-ribbon text-btn-bg"></i> Certifications
+      </h2>
+
+      <ul class="space-y-6">
+        <li
+          v-for="(cert, i) in certifications"
+          :key="'cert-' + i"
+          class="w-fit py-6 px-3 md:px-6 bg-card-bg rounded-xl shadow-custom border-b-2 border-color-text"
+        >
+          <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-2">
+            {{ cert.title }}
+          </h3>
+          <p class="text-color-text mb-1 text-sm sm:text-base">
+            <span class="font-semibold">Issued by:</span> {{ cert.issuer }}
+          </p>
+          <p class="text-color-text text-xs sm:text-sm flex items-center">
+            <span class="font-semibold">Credential ID:</span>
+            <template v-if="cert.link">
+              <a :href="cert.link" target="_blank" class="underline ml-2">{{
+                cert.credentialId
+              }}</a>
+            </template>
+            <template v-else>
+              <span class="ml-2">{{ cert.credentialId }}</span>
+            </template>
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SKILLSET -->
+    <section>
+      <h2
+        class="text-xl sm:text-2xl md:text-3xl font-bold text-text mb-4 flex items-center gap-2"
+      >
+        <i class="icon ion-md-code-working text-btn-bg"></i>Tools & Skillset
+      </h2>
+
+      <div class="flex flex-wrap gap-2">
+        <div
+          v-for="(skill, i) in skillset"
+          :key="i"
+          class="py-3 sm:py-4 px-3 md:px-6 bg-card-bg rounded-xl shadow-custom fade-in slide-in"
+        >
+          <h3 class="text-lg sm:text-xl font-bold text-btn-bg mb-4">
+            {{ skill.category }}
+          </h3>
+          <ul class="flex flex-wrap gap-2">
+            <li
+              v-for="(s, j) in skill.skills"
+              :key="j"
+              class="px-3 py-1 bg-btn-bg/10 text-btn-bg rounded-full text-xs sm:text-sm font-medium border border-btn-bg/20 flex items-center gap-2"
+            >
+              <img :src="s.icon" alt="" class="w-4 h-4 sm:w-5 sm:h-5" />
+              {{ s.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
