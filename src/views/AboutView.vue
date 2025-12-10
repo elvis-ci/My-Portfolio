@@ -16,37 +16,31 @@ const services = ref([
     name: "Custom Web Development",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
     description:
-      "Building responsive, high performance, and user-friendly websites tailored to business goals using modern web technologies like HTML5, CSS3, JavaScript, Vue.js, and React.",
+      "Building responsive, high performance, and user-friendly websites from scratch, tailored to business goals using modern web technologies and best practices.",
   },
   {
     name: "Wix & WordPress Development",
     icon: "https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg",
     description:
-      "Building and customizing easy-to-manage websites with WordPress and Wix so you can update content, publish pages, and run your site without needing technical skills.",
+      "Building and customizing easy-to-manage budget friendly websites with no code tools like WordPress and Wix so you can update content, publish pages, and run your site without needing technical skills.",
   },
   {
     name: "Accessibility Audits & Remediation",
     icon: "https://cdn-icons-png.flaticon.com/512/159/159469.png",
     description:
-      "Providing end-to-end accessibility support through comprehensive audits and hands-on remediation using WCAG 2.1 ensure products meet global accessibility standards. I collaborate with teams to identify barriers, enhance keyboard and screen-reader usability.",
+      "Providing end-to-end accessibility support through comprehensive audits and hands-on remediation, ensuring a legally compliant, truly accessible product for your brand and your users.",
   },
   {
     name: "SEO Optimization",
     icon: "https://cdn-icons-png.flaticon.com/512/2965/2965358.png",
     description:
-      "Improving search engine rankings and website visibility through optimized content, clean code structure, metadata, and performance-focused practices.",
+      "Improving search engine rankings and website visibility through optimized content, clean code structure, metadata, and performance-focused best practices.",
   },
   {
     name: "Project Management",
     icon: "https://cdn-icons-png.flaticon.com/512/1006/1006363.png",
     description:
       "Applying Agile and Scrum methodologies to ensure projects are delivered on time, within scope, and aligned with stakeholder goals while promoting team collaboration.",
-  },
-  {
-    name: "Code Cleanup & Refactoring",
-    icon: "https://cdn-icons-png.flaticon.com/512/1828/1828911.png",
-    description:
-      "Reviewing, cleaning, and restructuring existing codebases to improve readability, maintainability, and scalability while eliminating technical debt.",
   },
 ]);
 
@@ -156,7 +150,7 @@ function afterLeave(el) {
           <!-- Typer Header -->
           <div>
             <p class="sr-only">
-              Hello, I am Elvis Izuegbu, a Web Developer, And Web Accessibility
+              Hello, I'm Elvis Izuegbu, A Web Developer, and A Web Accessibility
               Expert.
             </p>
 
@@ -165,7 +159,7 @@ function afterLeave(el) {
             >
               <VueTyper
                 :text="[
-                  'Hello, I am Elvis Izuegbu, A Web Developer, And Web Accessibility Expert.',
+                  'Hello, I\'m Elvis Izuegbu, A Web Developer, and A Web Accessibility Expert.',
                 ]"
                 :type-delay="100"
                 :cursor-blink="true"
@@ -181,15 +175,14 @@ function afterLeave(el) {
             <p
               class="text-text text-sm sm:text-base md:text-lg leading-relaxed"
             >
-              Experienced in building interactive, inclusive UIs with modern web
-              technologies.
+              Experienced in building high performance web solutions with inclusive and interactive user interfaces, using modern web
+              technologies and best practices.
             </p>
             <p
               class="text-text text-sm sm:text-base md:text-lg leading-relaxed"
             >
-              I also specialize in manual and automated accessibility testing
-              and remediation using testing tools, Section 508, and WCAG
-              guidelines—ensuring legal compliance and driving user retention
+              I also specialize in accessibility testing
+              and remediation using a combination of comprehensive accessibility testing tools and globally recognized accessibility guidelines ensuring legal compliance and driving user retention
               through improved user experience.
             </p>
           </div>
@@ -237,15 +230,15 @@ function afterLeave(el) {
                 <li>
                   <a
                     href="https://www.linkedin.com/in/izuegbu-elvis"
-                    aria-label="open link to connect with me on linkedin"
+                    aria-label="Link to linkedin Profile"
                     target="_blank"
                     rel="noreferrer"
                     class="text-text hover:text-btn-bg transition-colors"
                   >
-                    <i class="icon ion-logo-linkedin text-2xl"></i>
+                    <i class="icon ion-logo-linkedin text-xl"></i>
                   </a>
                 </li>
-                <li>
+                <!-- <li>
                   <a
                     href="https://github.com/elvis-ci"
                     target="_blank"
@@ -255,14 +248,14 @@ function afterLeave(el) {
                   >
                     <i class="icon ion-logo-github text-2xl"></i>
                   </a>
-                </li>
+                </li> -->
                 <li>
                   <a
                     href="mailto:izuegbuelvis@gmail.com"
-                    aria-label="open to send me an email"
+                    aria-label="Link to Email"
                     class="text-text hover:text-btn-bg transition-colors"
                   >
-                    <i class="icon ion-md-mail text-2xl"></i>
+                    <i class="icon ion-md-mail text-xs"></i>
                   </a>
                 </li>
               </ul>
@@ -333,6 +326,6 @@ function afterLeave(el) {
 
 .icon {
   /* If you use an icon font like Ionicons, keep this. Otherwise swap with inline SVGs */
-  font-size: 1.5rem;
+  font-size: 2.0rem;
 }
 </style>
