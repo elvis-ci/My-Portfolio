@@ -48,18 +48,18 @@ const router = createRouter({
       },
     },
 
-    {
-      path: "/blog",
-      name: "blog",
-      component: Blog,
-      meta: {
-        title:
-          "Blog – Accessibility, Web Development & Inclusive Design by Elvis Izuegbu",
-        description:
-          "Read articles and insights from Elvis Izuegbu on accessibility (WCAG, ADA), frontend development, usability, inclusive design, and modern web best practices.",
-        image: "/imgs/myself2.png",
-      },
-    },
+    // {
+    //   path: "/blog",
+    //   name: "blog",
+    //   component: Blog,
+    //   meta: {
+    //     title:
+    //       "Blog – Accessibility, Web Development & Inclusive Design by Elvis Izuegbu",
+    //     description:
+    //       "Read articles and insights from Elvis Izuegbu on accessibility (WCAG, ADA), frontend development, usability, inclusive design, and modern web best practices.",
+    //     image: "/imgs/myself2.png",
+    //   },
+    // },
 
     {
       path: "/contact",
