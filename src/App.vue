@@ -39,6 +39,14 @@ onBeforeUnmount(() => {
 >
   <span class="text-white font-extrabold transition-transform duration-300">^</span>
 </button> -->
+<a
+  href="https://wa.me/2349017690869?text=Hello%20I%20am%20interested%20in%20your%20services"
+  target="_blank"
+  class="fixed bottom-3 right-3 bg-green-500 w-10 md:w-14  rounded-full flex items-center justify-center shadow-xl hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+>
+  <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" class="w-14 rounded-full" />
+</a>
+
   </div>
 </template>
 
